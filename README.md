@@ -10,8 +10,6 @@ In this session, you will learn the basic and advanced methods to deploy a SQL S
 * Basic familiarity with shell scripting
 * DBA / database developer experience with SQL Server
 
-_This repository includes all the material from my [PASS Summit 2019 session](https://www.pass.org/summit/2019/Learn/SessionDetails.aspx?name=working-with-sql-server-containers-to-build-database-solutions&sid=92481)._
-
 # Questions?
 If you have questions or comments about this demo, don't hesitate to contact me at <crobles@dbamastery.com>
 
