@@ -10,6 +10,13 @@ In this session, you will learn the basic and advanced methods to deploy a SQL S
 * Basic familiarity with shell scripting
 * DBA / database developer experience with SQL Server
 
+**Demos**  
+* [01 - Custom SQL Server container]
+* [02 - Custom SQL Server image]
+* [03 - Manual app integration (Docker compose)]
+* [04 - CI with Jenkins]
+* [05 - CI / CD with Jenkins and Kubernetes]
+
 # Questions?
 If you have questions or comments about this demo, don't hesitate to contact me at <crobles@dbamastery.com>
 
