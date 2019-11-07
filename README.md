@@ -12,10 +12,10 @@ In this session, you will learn the basic and advanced methods to deploy a SQL S
 
 ## **Demos**  
 * [01 - Custom SQL Server container](Demo_01)
-* [02 - Custom SQL Server image]()
-* [03 - Manual app integration (Docker compose)]()
-* [04 - CI with Jenkins]()
-* [05 - CI / CD with Jenkins and Kubernetes]()
+* [02 - Custom SQL Server image](Demo_02)
+* [03 - Manual app integration (Docker compose)](Demo_03)
+* [04 - CI with Jenkins](Demo_04)
+* [05 - CI / CD with Jenkins and Kubernetes](Demo_05)
 
 ## Questions?
 If you have questions or comments about this demo, don't hesitate to contact me at <crobles@dbamastery.com>
