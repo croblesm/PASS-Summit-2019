@@ -12,7 +12,7 @@
 * Build image (locally)
 * Test local image with local container
 * Tag local image
-* Push local image to [Docker hub repository](https://cloud.docker.com/u/crobles10/repository/docker/crobles10/hr-database)
+* Push local image to [Docker hub repository](https://hub.docker.com/repository/docker/crobles10/hr-db-dev_stg)
 
 > Part 2 - Troubleshooting
 
