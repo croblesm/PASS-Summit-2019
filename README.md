@@ -17,7 +17,7 @@ In this session, you will learn the basic and advanced methods to deploy a SQL S
 * [04 - CI with Jenkins](Demo_04)
 * [05 - CI / CD with Jenkins and Kubernetes](Demo_05)
 
-# Note
+## Note
 Special thanks to [Geovani de Leon](https://www.linkedin.com/in/geovani-de-león-5a315359/) from Guatemala 🇬🇹 for the help, developing the frontend (Angular) and backend (C#) part of this demo HR application. 👍 🚀
 
 Please take a moment to follow [Geovani GitHub's repository](https://github.com/yovafree). He is a really talented developer promoting OpenSource and .NET Core. [Here is the original app repository](https://git.io/JezQC), it is really amazing to say that Geovani built the app remotely just having access to the SQL Server image I pushed into [my public DockerHub repository](https://hub.docker.com/repository/docker/crobles10/hr-db-dev_stg).
