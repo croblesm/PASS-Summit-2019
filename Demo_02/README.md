@@ -27,7 +27,8 @@
 * Report issue to DBA
 * Open "Troubleshooting" ADS notebook
 	* Run sp_WhoIsActive
-    * Find blocking
+	* Find blocking
+	* Save / Send results to DBA
 
 # Questions?
 If you have questions or comments about this demo, don't hesitate to contact me at <crobles@dbamastery.com>
