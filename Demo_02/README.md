@@ -2,6 +2,7 @@
 
 > Part 1 - Docker build
 
+* Show folder structure
 * Inspect Dockerfile
 	* Show image customizations
 	* Show deployment script
