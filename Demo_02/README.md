@@ -2,13 +2,14 @@
 
 > Part 1 - Docker build
 
-* Convert custom container to DockerFile
-* Copy all required files and scripts
-* Add community favorite repositories (monitoring)
+* Inspect Dockerfile
+	* Show image customizations
+	* Show deployment script
+	* Show SQL scripts
 * Deployment
     * Creation of DBA database
-    * Deployment of [sp_WhoIsActive](https://github.com/amachanic/sp_whoisactive)
-    * Deployment of [First responder kit](https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit)
+    * [sp_WhoIsActive](https://github.com/amachanic/sp_whoisactive) Deployment
+    * [First responder kit](https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit) Deployment
 * Build image (locally)
 * Test local image with local container
 * Tag local image
