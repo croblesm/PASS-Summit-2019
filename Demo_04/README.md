@@ -1,11 +1,12 @@
 # Demo 04 - Continous integration with Jenkins
 
-* Walk through diagram
-* Show architecture and components
+* Walkthrough diagram
+* Show architecture and other components
 * Show Dockerfile
 * Show Jenkinsfile
 * Show DBA GitHub repository
 * Make a change in SQL Server deployment
+  * V2 of deployment script
 * Update SQL Server image in Dockerfile
 * Commit changes to GitHub
 * Check Jenkins automated build
