@@ -7,9 +7,12 @@
 	* Show deployment script
 	* Show SQL scripts
 * Deployment
-    * Creation of DBA database
+    * DBA database creation
     * [sp_WhoIsActive](https://github.com/amachanic/sp_whoisactive) Deployment
     * [First responder kit](https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit) Deployment
+    * HR database restoration
+    * Login creation
+    * Mask data
 * Build image (locally)
 * Test local image with local container
 * Tag local image
@@ -17,12 +20,12 @@
 
 > Part 2 - Troubleshooting
 
-* Create container using custom dev image on ACI (Azure container instances)
+* Create container using custom **dev** environment image on ACI (Azure container instances)
 * Check container logs
 * Get container public DNS / IP from Azure
-* Execute some queries
+* Execute some queries, this action will cause a blocking in SQL Server
 * Report issue to DBA
-* Open a ADS notebook
+* Open "Troubleshooting" ADS notebook
 	* Run sp_WhoIsActive
     * Find blocking
 
