@@ -11,6 +11,7 @@
 * Commit changes to GitHub
 * Check Jenkins automated build
 * Show stage in Jenkins project dashboard
+* Check MS teams notification 
 
 # Questions?
 If you have questions or comments about this demo, don't hesitate to contact me.
