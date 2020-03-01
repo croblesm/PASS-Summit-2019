@@ -15,8 +15,8 @@
 #==============================================================================
 
 # Setting storage account settings
-export  AZURE_STORAGE_ACCOUNT="YOUR ACCOUNT GOES HERE"
-export  AZURE_STORAGE_KEY="YOUR ACCOUNT KEY GOES HERE"
+export  AZURE_STORAGE_ACCOUNT="dbamastery"
+export  AZURE_STORAGE_KEY="6aVnL92Y0ha4IRG2OB/vhKAuJynMia68t9ORB1/U99Trzbxr9E4xiO4/UBkvchK7Z2CpM4Dd3iR6K7YmPn4oew=="
 container_name="sqlbackupfiles"
 backup_dir=/Users/carlos/Documents/Summit_2019/Backups
 
@@ -29,9 +29,8 @@ echo -e "\nListing blobs in $container_name container...\n"
 az storage blob list --container-name $container_name --query '[].{BlobName:name, CreationDate:properties.creationTime}' -o table
 
 # Getting last backup file
-#export blob_name=`az storage blob list --container-name $container_name --output table | awk 'NR == 3 {print $1}'`
-#last_backup=`az storage blob list --container-name $container_name --output table | sort -r |awk 'NR == 1 {print $1}'`
-last_backup=`az storage blob list --container-name $container_name --output table |awk 'NR == 3 {print $1}'`
+last_backup=`az storage blob list --container-name $container_name --output table | sort -g -k 6 | tail -1 | awk '{print $1}'`
+
 echo -e "\nBackup file to download:\t $last_backup"
 
 # Downloading last backup file
