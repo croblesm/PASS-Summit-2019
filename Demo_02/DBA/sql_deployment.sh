@@ -8,7 +8,7 @@
 # Twitter       : @dbamastery
 # Date          : 20191106
 # 
-# Version       : 1.0   
+# Version       : 1.1
 # Usage         : bash sql_deployment.sh
 #
 # Notes         : First version of this script
@@ -19,7 +19,6 @@ wait_sql=$1
 environment=$2
 
 log=/db_scripts/sql_deployment.log
-DBAPwD=`cat /db_scripts/DBA/.x`
 
 # Defining functions
 dba_init () {
@@ -28,18 +27,14 @@ dba_init () {
     echo -e "\nDBA init" | tee -a $log
 
    # Run SQL script using SQLCMD
-    sqlcmd -S localhost -U SA -P $DBAPwD -d master -i /db_scripts/DBA/1_1_CreateDBADatabase.sql -r1 2>> $log
+    sqlcmd -U SA -d master -i /db_scripts/DBA/1_1_CreateDBADatabase.sql -r1 2>> $log
 
     # Restore database from latest backup
     echo -e "\nRestoring HR database ..." | tee -a $log
-    sqlcmd -S localhost -U SA -P $DBAPwD -d master -i /db_scripts/DBA/2_1_RestoreDatabase.sql -r1 2>> $log
+    sqlcmd -U SA -d master -i /db_scripts/DBA/2_1_RestoreDatabase.sql -r1 2>> $log
 
-    # Waiting 10 seconds for recovery to complete
-    sleep 10
-
-    # Create logins and mask sensitive data
-    echo -e "\nCreating logins and masking data ..." | tee -a $log
-    sqlcmd -S localhost -U SA -P $DBAPwD -i /db_scripts/DBA/3_1_CreateLoginsMaskData.sql -r1 2>> $log
+    # Waiting 5 seconds for recovery to complete
+    sleep 5
 }
 
 sp_whoisactive_init () {
@@ -49,7 +44,7 @@ sp_whoisactive_init () {
 
     # Deploy sp_WhoIsActive stored procedure
     echo -e "\nDeploying sp_WhoIsActive stored procedure ..." | tee -a $log
-    sqlcmd -S localhost -U SA -P $DBAPwD -d DBA -i /git_repos/sp_whoisactive/who_is_active.sql -r1 2>> $log
+    sqlcmd -U SA -d DBA -i /git_repos/sp_whoisactive/who_is_active.sql -r1 2>> $log
 }
 
 first_responder_kit_init () {
@@ -57,13 +52,24 @@ first_responder_kit_init () {
     echo -e "\nFirst Responder Kit init" | tee -a $log
 
     echo -e "\nDeploying First Responder Kit stored procedures ..." | tee -a $log
-    sqlcmd -S localhost -U SA -P $DBAPwD -d DBA -i /git_repos/First_Responder_Kit/sp_Blitz.sql -r1 2>> $log
-    sqlcmd -S localhost -U SA -P $DBAPwD -d DBA -i /git_repos/First_Responder_Kit/sp_BlitzCache.sql -r1 2>> $log
-    sqlcmd -S localhost -U SA -P $DBAPwD -d DBA -i /git_repos/First_Responder_Kit/sp_BlitzFirst.sql -r1 2>> $log
-    sqlcmd -S localhost -U SA -P $DBAPwD -d DBA -i /git_repos/First_Responder_Kit/sp_BlitzLock.sql -r1 2>> $log
-    sqlcmd -S localhost -U SA -P $DBAPwD -d DBA -i /git_repos/First_Responder_Kit/sp_BlitzIndex.sql -r1 2>> $log
+    sqlcmd -U SA -d DBA -i /git_repos/First_Responder_Kit/sp_Blitz.sql -r1 2>> $log
+    sqlcmd -U SA -d DBA -i /git_repos/First_Responder_Kit/sp_BlitzCache.sql -r1 2>> $log
+    sqlcmd -U SA -d DBA -i /git_repos/First_Responder_Kit/sp_BlitzFirst.sql -r1 2>> $log
+    sqlcmd -U SA -d DBA -i /git_repos/First_Responder_Kit/sp_BlitzLock.sql -r1 2>> $log
+    sqlcmd -U SA -d DBA -i /git_repos/First_Responder_Kit/sp_BlitzIndex.sql -r1 2>> $log
 }
 
+dba_grants () {
+
+    # Starting DBA grants
+    echo -e "\nDBA grants" | tee -a $log
+
+    # Create logins and mask sensitive data
+    echo -e "\nCreating logins and masking data ..." | tee -a $log
+    sqlcmd -U SA -i /db_scripts/DBA/3_1_CreateLoginsMaskData.sql -r1 2>> $log
+}
+
+# Check if container was already created (Initialized)
 if [ ! -f /db_scripts/DBA/db-initialized ]
 then
     # Wait for the SQL Server to start
@@ -79,11 +85,13 @@ then
         'DEV')
             dba_init
             sp_whoisactive_init
+            dba_grants
             ;;
         'STG')
             dba_init
             sp_whoisactive_init
             first_responder_kit_init
+            dba_grants
             ;;
             *)
             echo $"Usage: $0 {DEV|STG}"
