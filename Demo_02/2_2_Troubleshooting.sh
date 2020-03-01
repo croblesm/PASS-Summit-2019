@@ -14,24 +14,32 @@
 # 0- Env variables | demo path
 cd /Users/carlos/Documents/Summit_2019/Demo_02
 
-### Getting started with Azure container instances ☁️ 💻 📝 
-### MSSQL tips article 👇 👍
-### https://bit.ly/324Tqwd
+### Getting started with Azure container instances 💻 📝 
+### MSSQL tips articles series 👇 👍
+### https://bit.ly/324Tqwd --> Create
+### https://bit.ly/388jUQo --> Manage
+### https://bit.ly/2PxqARR --> Connect
 
 # 1- Creating container using Azure container instances
+# To delete an existing ACI container
+# az container delete --name hr-dev-sql01 --resource-group Summit2019
+
 az container create --resource-group Summit2019 \
 --name hr-dev-sql01 \
---image crobles10/hr-database:10.0 \
+--image crobles10/hr-db-dev_stg:10.0 \
 --environment-variables WAIT_SQL=35 \
 --dns-name-label hr-dev-sql01 \
---cpu 2 \ # 👀 Cannot use 0 or the default - minimum is 2 CPUs for SQL Server on Linux
---memory 2 \ # 👀 Cannot use 0 or the default - minimum is 2 GBs for SQL Server on Linux
+--cpu 2 \
+--memory 2 \
 --port 1433
+
+# 👀 Cannot use 0 or the default - minimum is 2 CPUs for SQL Server on Linux
+# 👀 Cannot use 0 or the default - minimum is 2 GBs for SQL Server on Linux
 
 ### SQL Server on Linux - System requirements 👀 👇
 ### https://bit.ly/2Wxn2RW
 
-# Container provisioning
+# Container creation output from Azure
 {
   "containers": [
     {
@@ -43,44 +51,44 @@ az container create --resource-group Summit2019 \
           "value": "35"
         }
       ],
-      "image": "crobles10/hr-database:20.0",
+      "image": "crobles10/hr-db-dev_stg:10.0",
       "instanceView": {
         "currentState": {
           "detailStatus": "",
           "exitCode": null,
           "finishTime": null,
-          "startTime": "2019-10-24T16:38:39+00:00",
+          "startTime": "2020-02-29T02:10:33+00:00",
           "state": "Running"
         },
         "events": [
           {
             "count": 1,
-            "firstTimestamp": "2019-10-24T16:37:13+00:00",
-            "lastTimestamp": "2019-10-24T16:37:13+00:00",
-            "message": "pulling image \"crobles10/hr-database:20.0\"",
+            "firstTimestamp": "2020-02-29T02:09:06+00:00",
+            "lastTimestamp": "2020-02-29T02:09:06+00:00",
+            "message": "pulling image \"crobles10/hr-db-dev_stg:10.0\"",
             "name": "Pulling",
             "type": "Normal"
           },
           {
             "count": 1,
-            "firstTimestamp": "2019-10-24T16:38:31+00:00",
-            "lastTimestamp": "2019-10-24T16:38:31+00:00",
-            "message": "Successfully pulled image \"crobles10/hr-database:20.0\"",
+            "firstTimestamp": "2020-02-29T02:10:23+00:00",
+            "lastTimestamp": "2020-02-29T02:10:23+00:00",
+            "message": "Successfully pulled image \"crobles10/hr-db-dev_stg:10.0\"",
             "name": "Pulled",
             "type": "Normal"
           },
           {
             "count": 1,
-            "firstTimestamp": "2019-10-24T16:38:39+00:00",
-            "lastTimestamp": "2019-10-24T16:38:39+00:00",
+            "firstTimestamp": "2020-02-29T02:10:33+00:00",
+            "lastTimestamp": "2020-02-29T02:10:33+00:00",
             "message": "Created container",
             "name": "Created",
             "type": "Normal"
           },
           {
             "count": 1,
-            "firstTimestamp": "2019-10-24T16:38:39+00:00",
-            "lastTimestamp": "2019-10-24T16:38:39+00:00",
+            "firstTimestamp": "2020-02-29T02:10:33+00:00",
+            "lastTimestamp": "2020-02-29T02:10:33+00:00",
             "message": "Started container",
             "name": "Started",
             "type": "Normal"
@@ -121,7 +129,7 @@ az container create --resource-group Summit2019 \
   "ipAddress": {
     "dnsNameLabel": "hr-dev-sql01",
     "fqdn": "hr-dev-sql01.westus.azurecontainer.io",
-    "ip": "13.83.24.167",
+    "ip": "13.86.186.221",
     "ports": [
       {
         "port": 1433,
