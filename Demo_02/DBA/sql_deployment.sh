@@ -11,7 +11,10 @@
 # Version       : 1.1
 # Usage         : bash sql_deployment.sh
 #
-# Notes         : First version of this script
+# Notes         : 
+#
+# crobles       : 201911 - First version of this script
+# crobles       : 202002 - Fixed problem with deployment changing order of functions
 #==============================================================================
 
 # Mapping env variables with local variables
