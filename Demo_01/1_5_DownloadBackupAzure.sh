@@ -15,8 +15,8 @@
 #==============================================================================
 
 # Setting storage account settings
-export  AZURE_STORAGE_ACCOUNT="dbamastery"
-export  AZURE_STORAGE_KEY="6aVnL92Y0ha4IRG2OB/vhKAuJynMia68t9ORB1/U99Trzbxr9E4xiO4/UBkvchK7Z2CpM4Dd3iR6K7YmPn4oew=="
+export  AZURE_STORAGE_ACCOUNT="XX"
+export  AZURE_STORAGE_KEY="YY"
 container_name="sqlbackupfiles"
 backup_dir=/Users/carlos/Documents/Summit_2019/Backups
 
