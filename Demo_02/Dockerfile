@@ -9,10 +9,12 @@ ENV MSSQL_AGENT_ENABLED=1
 # Custom environment variables
 ENV WAIT_SQL=20
 ENV ENVIRONMENT=DEV
+ENV SQLCMDPASSWORD=${SA_PASSWORD}
 
-# Installing git
-RUN apt-get update \
-    && apt-get install -y git \
+# Installing git using apt-get
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    git \
     # Pre-staging script directory
     && mkdir /db_scripts \
     # Pulling git repositories (Open source SQL Server tools)
